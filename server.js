@@ -33,10 +33,10 @@ function listening () {
 
 
 // routes
-app.get("/", (req, res) => {res.send(projectData)});
-app.post("/", addData);
+app.get('/', (req, res) => {res.send(projectData)});
+app.post('/', addData);
 
 function addData (req, res) {
   console.log(req.body);
-  data.push(req.body);
+  projectData.push(req.body);
 };
