@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+const projectData = [];
 
 // Require Express to run server and routes
 const express = require('Express');
@@ -16,14 +16,14 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require('cors');
-app.use(cors);
+app.use(cors());
 
 // Initialize the main project folder
 app.use(express.static('website'));
 
 
 // Setup Server
-const port = 3000;
+const port = 8000;
 const server = app.listen(port, listening);
 
 function listening () {
@@ -39,4 +39,5 @@ app.post('/', addData);
 function addData (req, res) {
   console.log(req.body);
   projectData.push(req.body);
+  console.log(projectData);
 };
