@@ -5,13 +5,14 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: minmax(auto, auto);
+    grid-template-columns: 100%;
+    /* grid-auto-rows: minmax(auto, auto); */
     /* grid-template-columns:  */
     /* height:100vh; */
     background: #22b2da;
     /* color: #f0d43a; */
     justify-content: center;
-    grid-gap: 1em;
+    /* grid-gap: 1em; */
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     padding: 20px;
@@ -33,6 +34,7 @@ body{
 
 .myInput{
   font: 1.3em cambria;
+  width: 90%;
 }
 
 #entryHolder{
@@ -65,12 +67,12 @@ label{
 }
 
 input{
-  height: 60px;
-  width: 320px;
+  height: 40px;
+  width: 50%;
 }
 
 button{
-    width: 400px;
+    width: 50%;
     height: 100px;
     background: red;
     color: navy;
