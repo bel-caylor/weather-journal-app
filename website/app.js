@@ -20,19 +20,45 @@ const weather = async (weatherURL, zip, apiKey) => {
 function addEntry () {
   let feelings = document.getElementById('feelings').value;
   let zip = document.getElementById('zip').value;
-  // Create a new date instance dynamically with JS
+  //Test for values
+  inputTest();
+  //Set Date
   let d = new Date();
   let newDate = (d.getMonth()+1) +'.'+ d.getDate()+'.'+ d.getFullYear();
-  console.log(feelings, zip, newDate);
+  // console.log(feelings, zip, newDate);
+
+//Helper Functions
+//Test for zip and feeling values
+function inputTest() {
+  if (zip === "") {
+    alert("Please enter zip code.");
+    return;
+  };
+  if (feelings === "") {
+    alert("Please tell us how you are feeling today.");
+    return;
+  };
+};
+
+//Update Web Page
+const updateWebPage = async () => {
+  const request = await fetch('/');
+  try {
+    let
+  }catch(error){
+    console.log("error", error);
+  }
+
+  };
 
   //Get temp
   weather(weatherURL, zip, apiKey)
   .then(function(data) {
-    console.log(data);
+    // console.log(data);
     postData('/', {temperature:data.main.temp, date:newDate, userResponse:feelings});
   })
   .then(
-    //Update UI
+    // updateWebPage();
   )
   // console.log(weatherData);
   //   let temperature = weatherData.main[temp];
@@ -46,15 +72,7 @@ function addEntry () {
 //Listen for Generate button click
 document.getElementById('generate').addEventListener('click', addEntry);
 
-
-
-
-
-
-
-
-
-
+//Post Data to Server
 const postData = async ( url = '', data = {})=>{
     // console.log(data);
       const response = await fetch(url, {
