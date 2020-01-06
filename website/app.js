@@ -13,60 +13,66 @@ const weather = async (weatherURL, zip, apiKey) => {
   }
   catch(error) {
     console.log("error", error);
+
   }
 };
+
+//Helper Functions
+const inputTest = (zip, feelings) => {
+  if (zip === "") {
+    alert("Please enter zip code.");
+    return true;
+  };
+  if (feelings === "") {
+    alert("Please tell us how you are feeling today.");
+    return true;
+  };
+};
+
+// //Update Web Page
+const updateWebPage = async () => {
+  const request = await fetch('/');
+  // console.log(request);
+  try {
+    const allData = await request.json();
+    // const lastPlace = (allData.length - 1);
+    console.log(allData);
+  }catch(error){
+    console.log("error", error);
+  }
+  };
 
 //Main Functions
 function addEntry () {
   let feelings = document.getElementById('feelings').value;
   let zip = document.getElementById('zip').value;
   //Test for values
-  inputTest();
+  // console.log(inputTest(zip, feelings));
+  if (inputTest(zip, feelings) == true) {return};
   //Set Date
   let d = new Date();
   let newDate = (d.getMonth()+1) +'.'+ d.getDate()+'.'+ d.getFullYear();
   // console.log(feelings, zip, newDate);
 
-//Helper Functions
-//Test for zip and feeling values
-function inputTest() {
-  if (zip === "") {
-    alert("Please enter zip code.");
-    return;
-  };
-  if (feelings === "") {
-    alert("Please tell us how you are feeling today.");
-    return;
-  };
-};
-
-//Update Web Page
-const updateWebPage = async () => {
-  const request = await fetch('/');
-  try {
-    let
-  }catch(error){
-    console.log("error", error);
-  }
-
-  };
-
   //Get temp
   weather(weatherURL, zip, apiKey)
+
+  //Post Data
   .then(function(data) {
-    // console.log(data);
-    postData('/', {temperature:data.main.temp, date:newDate, userResponse:feelings});
+    //Test for error city not found
+    if (data.cod == "404" || data.cod == "400") {
+          alert("Please enter a valid city.");
+          return;
+    };
+    console.log(data);
+    let tempF = (data.main.temp * 9/5 - 459.67).toFixed(2);
+    postData('/', {temperature:tempF, date:newDate, userResponse:feelings});
   })
+  //Update Webpage
   .then(
-    // updateWebPage();
+    // updateWebPage()
   )
-  // console.log(weatherData);
-  //   let temperature = weatherData.main[temp];
 
-
-  //Post data
-  // postData('/', {temperature:temp, date:newDate, userResponse:feelings});
-  //Add Data to Website
 };
 
 //Listen for Generate button click
