@@ -18,6 +18,29 @@ const weather = async (weatherURL, zip, apiKey) => {
 };
 
 //Helper Functions
+//Post Data to Server
+const postData = async ( url = '', data = {})=>{
+    // console.log(data);
+      const response = await fetch(url, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+     // Body data type must match "Content-Type" header
+      body: JSON.stringify(data),
+    });
+
+      try {
+        const newData = await response.json();
+        console.log(newData);
+        return newData;
+      }catch(error) {
+      console.log("error", error);
+      }
+  };
+
+//Test to make sure there is input.
 const inputTest = (zip, feelings) => {
   if (zip === "") {
     alert("Please enter zip code.");
@@ -29,18 +52,44 @@ const inputTest = (zip, feelings) => {
   };
 };
 
-// //Update Web Page
+//Update Web Page
 const updateWebPage = async () => {
   const request = await fetch('/');
-  // console.log(request);
-  try {
+  console.log(request);
+  try{
     const allData = await request.json();
-    // const lastPlace = (allData.length - 1);
     console.log(allData);
+    const length = (allData.length - 1)
+    document.getElementById('date').innerHTML = allData[length].date;
+    document.getElementById('temp').innerHTML = allData[length].temp;
+    document.getElementById('content').innerHTML = allData[length].resp;
   }catch(error){
     console.log("error", error);
   }
-  };
+};
+
+// const updateWebPage = async () => {
+  // const request
+  // const request = await fetch('/', {
+  //   method: 'GET',
+    // credentials: 'same-origin',
+    // headers: {
+    //     'Content-Type': 'application/json',
+    // },
+   // Body data type must match "Content-Type" header
+    // body: JSON.stringify(data),
+  // });
+  // console.log(JSON.stringify(request));
+  // try {
+  //   const allData = await request.json();
+  //   // const lastPlace = (allData.length - 1);
+  //   console.log(allData);
+  // }catch(error){
+  //   console.log("error", error);
+  // }
+  // };
+//End Helper Functions
+
 
 //Main Functions
 function addEntry () {
@@ -64,41 +113,16 @@ function addEntry () {
           alert("Please enter a valid city.");
           return;
     };
-    console.log(data);
+    // console.log(data);
     let tempF = (data.main.temp * 9/5 - 459.67).toFixed(2);
     postData('/', {temperature:tempF, date:newDate, userResponse:feelings});
   })
   //Update Webpage
   .then(
-    // updateWebPage()
+    updateWebPage()
   )
 
 };
 
-//Listen for Generate button click
-document.getElementById('generate').addEventListener('click', addEntry);
-
-//Post Data to Server
-const postData = async ( url = '', data = {})=>{
-    // console.log(data);
-      const response = await fetch(url, {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-     // Body data type must match "Content-Type" header
-      body: JSON.stringify(data),
-    });
-
-      try {
-        const newData = await response.json();
-        console.log(newData);
-        return newData;
-      }catch(error) {
-      console.log("error", error);
-      }
-  }
-
-  // postData('/', {temperature:52});
-// postData('/', {temperature:52, date:newDate, userResponse:'userResp'});
+  //Listen for Generate button click
+  document.getElementById('generate').addEventListener('click', addEntry);

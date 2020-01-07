@@ -35,15 +35,33 @@ function listening () {
 // routes
 app.get('/', getData);
 // app.get('/', (req, res) => {res.send(projectData)});
+// app.post('/', function (req, res) {
+//   res.send('POST received')
+// });
 app.post('/', addData);
 
 function getData(req, res) {
-  console.log(projectData);
+  // console.log(projectData);
+  // console.log('test')
+  // res.send('hello world');
   res.send(projectData);
+  console.log('Data sent');
 };
 
 function addData (req, res) {
-  // console.log(req.body);
-  projectData.push(req.body);
+  console.log('Post received');
+
+  let newData = req.body;
+  let newEntry = {
+    temp: newData.temperature,
+    date: newData.date,
+    resp: newData.userResponse
+  };
+  projectData.push(newEntry);
   console.log(projectData);
+
+  // projectData.push(req.body);
+  // console.log(req.body);
+  // console.log(projectData);
+  // console.log('test');
 };
