@@ -68,26 +68,6 @@ const updateWebPage = async () => {
   }
 };
 
-// const updateWebPage = async () => {
-  // const request
-  // const request = await fetch('/', {
-  //   method: 'GET',
-    // credentials: 'same-origin',
-    // headers: {
-    //     'Content-Type': 'application/json',
-    // },
-   // Body data type must match "Content-Type" header
-    // body: JSON.stringify(data),
-  // });
-  // console.log(JSON.stringify(request));
-  // try {
-  //   const allData = await request.json();
-  //   // const lastPlace = (allData.length - 1);
-  //   console.log(allData);
-  // }catch(error){
-  //   console.log("error", error);
-  // }
-  // };
 //End Helper Functions
 
 

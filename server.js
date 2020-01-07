@@ -61,7 +61,5 @@ function addData (req, res) {
   console.log(projectData);
 
   // projectData.push(req.body);
-  // console.log(req.body);
   // console.log(projectData);
-  // console.log('test');
 };

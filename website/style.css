@@ -25,11 +25,11 @@ body{
 .entry{
   display:block;
   /* background:#22b2da; */
-  color: navy;
+  color: white;
   font-size: 20px;
   font-family: 'Oswald', sans-serif;
   border: none;
-  padding: 0px 20px 0px 20px;
+  padding: 20px;
 }
 
 .myInput{
