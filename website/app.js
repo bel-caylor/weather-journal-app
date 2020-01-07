@@ -54,15 +54,15 @@ const inputTest = (zip, feelings) => {
 
 //Update Web Page
 const updateWebPage = async () => {
-  const request = await fetch('/');
+  const request = await fetch('/all');
   console.log(request);
   try{
     const allData = await request.json();
     console.log(allData);
-    const length = (allData.length - 1)
-    document.getElementById('date').innerHTML = allData[length].date;
-    document.getElementById('temp').innerHTML = allData[length].temp;
-    document.getElementById('content').innerHTML = allData[length].resp;
+    const length = (allData.length-1)
+    document.getElementById('date').innerHTML = "Date:  " + allData[length].date;
+    document.getElementById('temp').innerHTML = "Temp:  " + allData[length].temp;
+    document.getElementById('content').innerHTML = "Feelings:  " + allData[length].resp;
   }catch(error){
     console.log("error", error);
   }
