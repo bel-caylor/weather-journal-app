@@ -4,23 +4,19 @@ let apiKey = '&APPID=723c0c754a5ad2c31e455fd50c29c5db';
 
 //Get temperature for zip code
 const weather = async (weatherURL, zip, apiKey) => {
-  // console.log(weatherURL+zip+apiKey)
   const res = await fetch(weatherURL+zip+apiKey)
   try {
     const data = await res.json();
-    // console.log(data);
     return data;
   }
   catch(error) {
     console.log("error", error);
-
   }
 };
 
 //Helper Functions
 //Post Data to Server
 const postData = async ( url = '', data = {})=>{
-    // console.log(data);
       const response = await fetch(url, {
       method: 'POST',
       credentials: 'same-origin',
@@ -76,12 +72,10 @@ function addEntry () {
   let feelings = document.getElementById('feelings').value;
   let zip = document.getElementById('zip').value;
   //Test for values
-  // console.log(inputTest(zip, feelings));
   if (inputTest(zip, feelings) == true) {return};
   //Set Date
   let d = new Date();
   let newDate = (d.getMonth()+1) +'.'+ d.getDate()+'.'+ d.getFullYear();
-  // console.log(feelings, zip, newDate);
 
   //Get temp
   weather(weatherURL, zip, apiKey)

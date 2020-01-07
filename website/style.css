@@ -6,13 +6,8 @@ body{
 #app{
     display: grid;
     grid-template-columns: 100%;
-    /* grid-auto-rows: minmax(auto, auto); */
-    /* grid-template-columns:  */
-    /* height:100vh; */
     background: #22b2da;
-    /* color: #f0d43a; */
     justify-content: center;
-    /* grid-gap: 1em; */
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     padding: 20px;
@@ -24,7 +19,6 @@ body{
 
 .entry{
   display:block;
-  /* background:#22b2da; */
   color: white;
   font-size: 20px;
   font-family: 'Oswald', sans-serif;
@@ -35,22 +29,6 @@ body{
 .myInput{
   font: 1.3em cambria;
   width: 90%;
-}
-
-#entryHolder{
-
-}
-
-#date{
-
-}
-
-#temp{
-
-}
-
-#content{
-
 }
 
 .headline {
@@ -104,17 +82,14 @@ button:focus {
 ::placeholder { /* Firefox, Chrome, Opera */
     color: #f0d43a;
     font-family: 'Oswald', sans-serif;
-
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: #f0d43a;
     font-family: 'Oswald', sans-serif;
-
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: #f0d43a;
     font-family: 'Oswald', sans-serif;
-
 }
