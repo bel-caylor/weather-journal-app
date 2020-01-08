@@ -84,17 +84,14 @@ function addEntry () {
   .then(function(data) {
     //Test for error city not found
     if (data.cod == "404" || data.cod == "400") {
-          alert("Please enter a valid city.");
-          return;
+      alert("Please enter a valid city.");
+      return;
     };
-    // console.log(data);
     let tempF = (data.main.temp * 9/5 - 459.67).toFixed(2);
-    postData('/', {temperature:tempF, date:newDate, userResponse:feelings});
+    postData('/', {temperature:tempF, date:newDate, userResponse:feelings})
+    .then(updateWebPage())
   })
-  //Update Webpage
-  .then(
-    updateWebPage()
-  )
+
 
 };
 

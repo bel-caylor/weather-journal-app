@@ -52,7 +52,4 @@ function addData (req, res) {
   };
   projectData.push(newEntry);
   console.log(projectData);
-
-  // projectData.push(req.body);
-  // console.log(projectData);
 };
