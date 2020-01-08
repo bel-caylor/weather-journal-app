@@ -1,6 +1,6 @@
 /* Global Variables */
-let weatherURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-let apiKey = '&APPID=723c0c754a5ad2c31e455fd50c29c5db';
+const weatherURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
+const apiKey = '&APPID=723c0c754a5ad2c31e455fd50c29c5db';
 
 //Get temperature for zip code
 const weather = async (weatherURL, zip, apiKey) => {
